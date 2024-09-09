@@ -1,11 +1,3 @@
-/*
- * @description: tailwind配置
- * @author: Jack Chen @懒人码农
- * @Date: 2024-03-05 20:30:07
- * @LastEditors: Jack Chen
- * @LastEditTime: 2024-03-05 23:20:29
- */
-// @ts-check
 const { fontFamily } = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
@@ -29,11 +21,14 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
+        sans: ['"LXGWBright-Regular"', 'sans-serif'],
+        // sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
       },
       colors: {
         primary: colors.blue,
-        gray: colors.gray,
+        // gray: colors.gray,
+        // primary: colors.teal,
+        gray: colors.neutral,
       },
       typography: ({ theme }) => ({
         DEFAULT: {

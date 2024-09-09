@@ -1,10 +1,3 @@
-/*
- * @description: 关于我组件
- * @author: Jack Chen @懒人码农
- * @Date: 2024-03-05 20:30:07
- * @LastEditors: Jack Chen
- * @LastEditTime: 2024-03-05 23:17:06
- */
 import { ReactNode } from 'react'
 import type { Authors } from 'contentlayer/generated'
 import SocialIcon from '@/components/social-icons'

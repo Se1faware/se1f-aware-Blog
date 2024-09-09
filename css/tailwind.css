@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-white text-black transition-colors duration-300 ease-in-out dark:bg-[#0b96db] dark:text-white;
+  }
+}
+
+:root {
+  --color-primary: theme('colors.teal.500');
+}
+
+.dark {
+  --color-primary: theme('colors.teal.300');
+}
+
 .task-list-item::before {
   @apply hidden;
 }
@@ -32,4 +46,28 @@ input:-webkit-autofill:focus {
 
 .katex-display {
   overflow: auto hidden;
+}
+
+/* Page Transition */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.page-transition-enter {
+  opacity: 0;
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
 }

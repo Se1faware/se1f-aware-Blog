@@ -3,7 +3,9 @@ const siteMetadata = {
   title: 'Se1fAware-Blog',
   author: 'Se1fAware',
   headerTitle: 'Se1fAware',
-  description: '分享 JavaScript 以及热门框架，记录Web3前端工程师学习成长历程。',
+  avatar: '/static/images/avatar.jpg',
+  intro: '终日乾乾，夕惕若厉，无咎。',
+  description: '一个还在重新学习，重塑思想的开发者',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://54web3.cc',
@@ -92,6 +94,12 @@ const siteMetadata = {
     //   apiKey: '599cec31baffa4868cae4e79f180729b',
     //   indexName: 'docsearch',
     // },
+  },
+  button: {
+    display: false,
+  },
+  post: {
+    homeMaxDisplay: 5,
   },
 }
 

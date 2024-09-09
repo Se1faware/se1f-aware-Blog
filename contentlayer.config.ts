@@ -107,6 +107,14 @@ export const Blog = defineDocumentType(() => ({
         url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath}`,
       }),
     },
+    wordCount: {
+      type: 'number',
+      resolve: (doc) => doc.body.raw.split(/\s+/gu).length,
+    },
+    readingTime: {
+      type: 'number',
+      resolve: (doc) => Math.ceil(doc.body.raw.split(/\s+/gu).length / 200),
+    },
   },
 }))
 

@@ -1,0 +1,5 @@
+@import url('https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkaibright/dist/LXGWBright-Regular/result.css');
+
+body {
+  font-family: 'LXGWBright-Regular', sans-serif;
+}
