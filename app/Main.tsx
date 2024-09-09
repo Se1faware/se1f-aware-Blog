@@ -8,10 +8,18 @@ import Image from 'next/image'
 export default function Home({ posts }) {
   return (
     <>
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
+      <div>
         <UserInfo />
-        <ul className="divide-y divide-gray-200 dark:divide-gray-700">{Post({ posts })}</ul>
+        {/* Home Info Header */}
+        <div className="divide-y divide-gray-200  text-3xl dark:divide-gray-700">
+          <div className="pb-3">推荐阅读</div>
+          <div className="pt-0"></div>
+        </div>
+        <ul className="divide-y divide-dashed divide-gray-200 dark:divide-gray-700">
+          {Post({ posts })}
+        </ul>
       </div>
+
       {siteMetadata.button?.display && posts.length > siteMetadata.post.homeMaxDisplay && (
         <div className="flex justify-end text-base font-medium leading-6">
           <Link
