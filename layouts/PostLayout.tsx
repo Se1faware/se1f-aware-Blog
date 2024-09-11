@@ -37,7 +37,6 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
   return (
     <SectionContainer>
-      {/* <PostScroll /> */}
       <ScrollTopAndComment />
       <article>
         <div className="">

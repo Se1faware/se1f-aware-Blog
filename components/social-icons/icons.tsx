@@ -1,10 +1,3 @@
-/*
- * @description: svg图标集
- * @author: Jack Chen @懒人码农
- * @Date: 2024-03-05 20:30:07
- * @LastEditors: Jack Chen
- * @LastEditTime: 2024-03-05 23:18:14
- */
 import { SVGProps } from 'react'
 
 // Icons taken from: https://simpleicons.org/

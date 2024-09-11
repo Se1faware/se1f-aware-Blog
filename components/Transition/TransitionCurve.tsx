@@ -125,7 +125,7 @@ export default function Transition({ children }: { children: React.ReactNode }) 
         />
         <motion.p
           {...anim(text)}
-          className="absolute top-[40%] z-30 w-screen text-center text-5xl text-white"
+          className="absolute top-[40%] z-30 text-center text-5xl text-white"
         >
           <CurrentPage />
         </motion.p>

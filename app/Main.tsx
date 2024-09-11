@@ -51,7 +51,11 @@ function UserInfo() {
         <p className="text-sm leading-7 text-gray-500 dark:text-gray-400">
           {siteMetadata.description}
         </p>
-        <div className="h-8 w-64 border-2 border-blue-500">Github · JUEJIN · ZHIHU</div>
+        <div>
+          <span className="cursor-pointer text-blue-500">RSS</span>
+          <span className="mx-2">·</span>
+          <span className="cursor-pointer text-blue-500">Contact Me</span>
+        </div>
       </div>
 
       <div className="hidden sm:block">

@@ -113,16 +113,16 @@ export default function ListLayout({
         <ul>
           {!filteredBlogPosts.length && 'No posts found.'}
           {displayPosts.map((post) => {
-            const { path, date, title, summary, tags } = post
+            const { path, date, title, summary, tags, wordCount, readingTime } = post
             return (
               <li key={path} className="py-4">
                 <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                  <dl>
+                  {/* <dl>
                     <dt className="sr-only">Published on</dt>
                     <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                       <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
                     </dd>
-                  </dl>
+                  </dl> */}
                   <div className="space-y-3 xl:col-span-3">
                     <div>
                       <h3 className="text-2xl font-bold leading-8 tracking-tight">
@@ -130,6 +130,13 @@ export default function ListLayout({
                           {title}
                         </Link>
                       </h3>
+                      <div className="pt-1 text-xs font-medium text-gray-700 dark:text-gray-400">
+                        <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+                        <span className="mx-1">·</span>
+                        <span className="text-xs font-medium">{wordCount} 字</span>
+                        <span className="mx-1">·</span>
+                        <span>{readingTime} 分钟</span>
+                      </div>
                       <div className="flex flex-wrap">
                         {tags?.map((tag) => <Tag key={tag} text={tag} />)}
                       </div>

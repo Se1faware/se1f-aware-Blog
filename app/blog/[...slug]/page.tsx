@@ -2,7 +2,7 @@ import 'css/prism.css'
 import 'katex/dist/katex.css'
 
 import PageTitle from '@/components/PageTitle'
-import { components } from '@/components/MDXComponents'
+import { components } from '@/components/MDX/MDXComponents'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { sortPosts, coreContent, allCoreContent } from 'pliny/utils/contentlayer'
 import { allBlogs, allAuthors } from 'contentlayer/generated'
@@ -93,6 +93,13 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   const prev = sortedCoreContents[postIndex + 1]
   const next = sortedCoreContents[postIndex - 1]
   const post = allBlogs.find((p) => p.slug === slug) as Blog
+  const filteredToc =
+    post.toc && Array.isArray(post.toc)
+      ? post.toc.map((item) => {
+          const urlWithoutDashNumber = item.url.replace(/-\d+$/, '')
+          return { ...item, url: urlWithoutDashNumber }
+        })
+      : []
   const authorList = post?.authors || ['default']
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author)
@@ -117,7 +124,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
       />
       <ScrollProgress />
       <Layout content={mainContent} authorDetails={authorDetails} next={next} prev={prev}>
-        <MDXLayoutRenderer code={post.body.code} components={components} toc={post.toc} />
+        <MDXLayoutRenderer code={post.body.code} components={components} toc={filteredToc} />
       </Layout>
     </>
   )
