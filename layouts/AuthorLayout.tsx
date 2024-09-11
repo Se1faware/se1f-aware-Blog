@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function AuthorLayout({ children, content }: Props) {
-  const { name, avatar, occupation, company, email, github, juejin, csdn } = content
+  const { name, avatar, occupation, company, email, github, juejin, leetCode, dotNET } = content
   const { author } = siteMetadata
 
   return (
@@ -25,13 +25,6 @@ export default function AuthorLayout({ children, content }: Props) {
         <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
           <div className="flex flex-col items-center space-x-2 pt-8">
             {avatar && (
-              // <Image
-              //   src={avatar}
-              //   alt="avatar"
-              //   width={192}
-              //   height={192}
-              //   className="h-48 w-48 rounded-full"
-              // />
               <Avatar className="h-28 w-28 rounded-full">
                 <AvatarImage src={avatar} alt="avatar" />
                 <AvatarFallback delayMs={600}>{name}</AvatarFallback>
@@ -44,13 +37,35 @@ export default function AuthorLayout({ children, content }: Props) {
               <SocialIcon kind="mail" href={`mailto:${email}`} />
               <SocialIcon kind="github" href={github} />
               <SocialIcon kind="juejin" href={juejin} />
-              {/* <SocialIcon kind="csdn" href={csdn} /> */}
-              {/* <SocialIcon kind="linkedin" href={linkedin} /> */}
-              {/* <SocialIcon kind="twitter" href={twitter} /> */}
+              <SocialIcon kind="leetCode" href={leetCode} />
             </div>
           </div>
           <div className="prose max-w-none pb-8 pt-8 dark:prose-invert xl:col-span-2">
-            {children}
+            <h2>My Skills</h2>
+            <h3>Front-End</h3>
+            <h4>Base Tech</h4>
+            <ul className="flex list-none p-0">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+            <h4>Css Power</h4>
+            <ul className="flex list-none p-0">
+              <li>Less & Sass</li>
+              <li>Tailwind Css</li>
+              <li>Css in Js</li>
+              <li>Emotion Css</li>
+            </ul>
+            <h4>More Magic</h4>
+            <ul className="flex list-none p-0">
+              <li>TypeScript</li>
+              <li>React</li>
+              <li>Next.Js</li>
+            </ul>
+            <li>
+              <SocialIcon kind="dotNET" href={dotNET} />
+              dotNET
+            </li>
           </div>
         </div>
       </div>
