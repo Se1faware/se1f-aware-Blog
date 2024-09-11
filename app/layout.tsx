@@ -1,5 +1,4 @@
 import 'css/tailwind.css'
-import 'css/fonts.css'
 import 'pliny/search/algolia.css'
 
 import { Space_Grotesk } from 'next/font/google'
@@ -12,6 +11,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 import TransitionCurve from '@/components/Transition/TransitionCurve'
+import Script from 'next/script'
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -63,9 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang={siteMetadata.language}
-      // className={`${space_grotesk.variable} scroll-smooth`}
-      style={{ fontFamily: 'LXGWBright-Regular, sans-serif' }}
-      className="scroll-smooth"
+      className={`${space_grotesk.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/favicon.ico" />

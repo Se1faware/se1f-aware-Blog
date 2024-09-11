@@ -66,6 +66,7 @@ module.exports = () => {
       dirs: ['app', 'components', 'layouts', 'scripts'],
     },
     images: {
+      domains: ['chinese-fonts-cdn.deno.dev'],
       remotePatterns: [
         {
           protocol: 'https',

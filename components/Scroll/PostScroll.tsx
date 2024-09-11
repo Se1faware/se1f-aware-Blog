@@ -1,12 +1,25 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { motion, useScroll } from 'framer-motion'
+import { motion, useScroll, useSpring } from 'framer-motion'
 
-const PostScroll = () => {
+export default function ScrollProgress() {
   const { scrollYProgress } = useScroll()
+  // 🔥common
+  // const scaleX = scrollYProgress
 
-  return <motion.div className="progress-bar" style={{ scaleX: scrollYProgress }} />
+  // 🔥lazy
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  })
+
+  return (
+    <motion.div
+      // initial={{ opacity: 0 }}
+      // whileInView={{ opacity: 1 }}
+      className="fixed left-0 right-0 top-0 z-50 h-2 origin-left bg-primary-500"
+      style={{ scaleX }}
+    />
+  )
 }
-
-export default PostScroll

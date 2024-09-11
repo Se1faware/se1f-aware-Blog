@@ -21,12 +21,10 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['"LXGWBright-Regular"', 'sans-serif'],
-        // sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
+        sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
       },
       colors: {
         primary: colors.blue,
-        // gray: colors.gray,
         // primary: colors.teal,
         gray: colors.neutral,
       },

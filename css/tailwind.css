@@ -8,6 +8,10 @@
   }
 }
 
+body {
+  font-family: 'LXGWBright-Regular', sans-serif;
+}
+
 :root {
   --color-primary: theme('colors.teal.500');
 }
