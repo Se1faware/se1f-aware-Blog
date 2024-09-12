@@ -121,6 +121,17 @@ input:-webkit-autofill:focus {
   transition: opacity 300ms ease-in;
 }
 
+.loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px; /* 可以根据需要调整高度 */
+  background-color: #0070f3; /* 可以根据需要调整颜色 */
+  z-index: 9999;
+  transition: width 0.3s ease-in-out;
+}
+
 /* @layer base {
   * {
     @apply border-border;
