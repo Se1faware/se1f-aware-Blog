@@ -259,6 +259,18 @@ export const IconSkillGraphqlLight = ({
 }: React.HTMLAttributes<HTMLSpanElement>) => {
   return <span {...props} className={cn('icon-[skill-icons--graphql-light]', className)}></span>
 }
+export const IconSkillJavalDark = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--java-dark]', className)}></span>
+}
+export const IconSkillJavalLight = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--java-light]', className)}></span>
+}
 
 // 定义只有一种颜色的图标组件
 export const IconSkillWebassembly = ({

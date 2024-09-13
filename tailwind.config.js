@@ -35,6 +35,8 @@ module.exports = {
         },
         customGrey: {
           100: '#2f2f2f',
+          200: '#3f3f3f',
+          300: '#4f4f4f',
         },
         line: 'rgb( 204, 204, 204, 0.2)',
         origin: 'rgb(238, 199, 99)',

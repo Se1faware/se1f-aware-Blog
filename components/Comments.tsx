@@ -12,6 +12,9 @@ export default function Comments({ slug }: { slug: string }) {
       {siteMetadata.comments && loadComments && (
         <CommentsComponent commentsConfig={siteMetadata.comments} slug={slug} />
       )}
+      {/* {siteMetadata.comments && loadComments && (
+        <CommentsComponent commentsConfig={siteMetadata.comments} slug={slug} />
+      )} */}
     </>
   )
 }

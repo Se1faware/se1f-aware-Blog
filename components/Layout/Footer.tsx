@@ -6,7 +6,7 @@ import SocialIcon from '@/components/social-icons'
 export default function Footer() {
   return (
     <footer>
-      <div className="border-line   flex flex-col items-center border-t-[1px] pt-2">
+      <div className="border-line flex flex-col items-center border-y-[1px] pt-2">
         <div className="mb-4  flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>{siteMetadata.author}</div>
           <div>{`Copyright © ${new Date().getFullYear()}`}</div>

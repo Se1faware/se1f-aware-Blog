@@ -10,11 +10,13 @@ export default function Home({ posts }) {
     <>
       <div>
         <UserInfo />
+        {/* Home Info Header */}
         <div className="divide-y divide-gray-200  text-3xl dark:divide-gray-700">
           {/* <div className="pb-3">推荐阅读</div> */}
           <h1 className="pb-3 text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
             Recommended Reading
           </h1>
+          {/* <div className="pt-0"></div> */}
         </div>
         <ul className="divide-y divide-dashed divide-gray-200 dark:divide-gray-700">
           {Post({ posts })}

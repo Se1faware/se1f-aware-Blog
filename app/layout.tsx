@@ -14,11 +14,6 @@ import TransitionCurve from '@/components/Transition/TransitionCurve'
 import LoadingBar from '@/components/Scroll/loadingScroll'
 
 // const space_grotesk = Space_Grotesk({
-//   subsets: ['latin'],
-//   display: 'swap',
-//   variable: '--font-space-grotesk',
-// })
-
 const space_grotesk = Jura({
   subsets: ['latin'],
   display: 'swap',
@@ -87,7 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <MainContainer>
             <LoadingBar />
-            <div className="flex flex-col justify-between font-sans">
+            <div className="flex flex-col justify-between bg-white font-sans dark:bg-gray-950">
               <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
                 <Header />
                 <main className="mx-4 mb-auto sm:mx-6">

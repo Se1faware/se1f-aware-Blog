@@ -1,0 +1,42 @@
+:root {
+  --dark: #252A2E;
+  --light: #F5F5F5;
+  --background: var(--light);
+  --text: var(--dark);
+  --border: var(--dark);
+}
+
+.tag-scrollers {
+  width: 100%;
+  max-width: 1200px;
+  overflow: hidden;
+}
+
+.tag-scroller {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 将所有图标分为3列 */
+  gap: 1.5rem;
+  mask: linear-gradient(90deg, #0000, var(--background) 15%, var(--background) 85%, #0000);
+}
+
+.skill-icon {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap; /* 确保图标不换行 */
+  gap: 1rem;
+}
+
+/* 隐藏和显示类 */
+.hidden {
+  display: none;
+}
+
+.dark\:hidden {
+  display: none;
+}
+
+.dark\:inline-block {
+  display: inline-block;
+}
