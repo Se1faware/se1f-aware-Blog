@@ -6451,6 +6451,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gsap@npm:^3.12.5":
+  version: 3.12.5
+  resolution: "gsap@npm:3.12.5"
+  checksum: 60b99dc4482992ba86013963ee9a97a5ec62d480495dd85764788913245aa08cfd202c1df4bbc7592e43d5faa885127bec75f77266f2964fe3d3b559ab63f852
+  languageName: node
+  linkType: hard
+
 "gzip-size@npm:^6.0.0":
   version: 6.0.0
   resolution: "gzip-size@npm:6.0.0"
@@ -11967,6 +11974,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vecteur@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "vecteur@npm:0.2.0"
+  checksum: 3b06af55825093c421ce3a42d1562389361d1acd71b4ec1e082fad13e39dfbb260afef96df3f550123b332721a1b4215f39fb68d9f3d1d1c36e21a568065d5c5
+  languageName: node
+  linkType: hard
+
 "vfile-location@npm:^4.0.0":
   version: 4.1.0
   resolution: "vfile-location@npm:4.1.0"
@@ -12047,6 +12061,7 @@ __metadata:
     framer-motion: ^11.5.4
     github-slugger: ^2.0.0
     gray-matter: ^4.0.2
+    gsap: ^3.12.5
     husky: ^8.0.0
     image-size: 1.0.0
     lint-staged: ^13.0.0
@@ -12075,6 +12090,7 @@ __metadata:
     tailwindcss-animate: ^1.0.7
     typescript: ^5.1.3
     unist-util-visit: ^4.1.0
+    vecteur: ^0.2.0
   languageName: unknown
   linkType: soft
 

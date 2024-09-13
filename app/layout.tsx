@@ -103,33 +103,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
-
-// <ContextMenu>
-// <ContextMenuTrigger>
-//   <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
-//     <ThemeProviders>
-//       <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
-//       <SectionContainer>
-//         <div className="flex h-screen flex-col justify-between font-sans">
-//           <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-//             <Header />
-//             <main className="mb-auto">
-//               {/* <TransitionCurve>{children}</TransitionCurve> */}
-//               {children}
-//             </main>
-//           </SearchProvider>
-//           <Footer />
-//         </div>
-//       </SectionContainer>
-//     </ThemeProviders>
-//   </body>
-// </ContextMenuTrigger>
-// <ContextMenuContent>
-//   <div className=" bg-slate-700">
-//     <ContextMenuItem>Copy</ContextMenuItem>
-//     <ContextMenuItem>Billing</ContextMenuItem>
-//     <ContextMenuItem>Team</ContextMenuItem>
-//     <ContextMenuItem>Subscription</ContextMenuItem>
-//   </div>
-// </ContextMenuContent>
-// </ContextMenu>
