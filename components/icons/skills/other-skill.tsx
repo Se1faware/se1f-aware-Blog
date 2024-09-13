@@ -194,3 +194,92 @@ export const IconSkillSolidity = ({
 }: React.HTMLAttributes<HTMLSpanElement>) => {
   return <span {...props} className={cn('icon-[skill-icons--solidity]', className)}></span>
 }
+
+export const IconSkillEmotionLight = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--emotion-light]', className)}></span>
+}
+export const IconSkillEmotionDark = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--emotion-dark]', className)}></span>
+}
+
+export const IconSkillVscodeDark = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--vscode-dark]', className)}></span>
+}
+export const IconSkillVscodeLight = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--vscode-light]', className)}></span>
+}
+
+export const IconSkillPythonLight = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--python-light]', className)}></span>
+}
+export const IconSkillPythonDark = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--python-dark]', className)}></span>
+}
+
+export const IconSkillRollupjsDark = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--rollupjs-dark]', className)}></span>
+}
+export const IconSkillRollupjsLight = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--rollupjs-light]', className)}></span>
+}
+
+export const IconSkillGraphqlDark = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--graphql-dark]', className)}></span>
+}
+export const IconSkillGraphqlLight = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--graphql-light]', className)}></span>
+}
+
+// 定义只有一种颜色的图标组件
+export const IconSkillWebassembly = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--webassembly]', className)}></span>
+}
+
+export const IconSkillCpp = ({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--cpp]', className)}></span>
+}
+
+export const IconSkillJest = ({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--jest]', className)}></span>
+}
+
+export const IconSkillSentry = ({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--sentry]', className)}></span>
+}
+
+export const IconSkillSvelte = ({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) => {
+  return <span {...props} className={cn('icon-[skill-icons--svelte]', className)}></span>
+}

@@ -1,11 +1,11 @@
 import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 
-import { Space_Grotesk } from 'next/font/google'
+import { Space_Grotesk, Jura } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Layout/Header'
-import SectionContainer from '@/components/Layout/SectionContainer'
+import MainContainer from '@/components/Layout/MainContainer'
 import Footer from '@/components/Layout/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
@@ -13,14 +13,13 @@ import { Metadata } from 'next'
 import TransitionCurve from '@/components/Transition/TransitionCurve'
 import LoadingBar from '@/components/Scroll/loadingScroll'
 
-// import {
-//   ContextMenu,
-//   ContextMenuContent,
-//   ContextMenuItem,
-//   ContextMenuTrigger,
-// } from '@/components/ui/context-menu'
+// const space_grotesk = Space_Grotesk({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-space-grotesk',
+// })
 
-const space_grotesk = Space_Grotesk({
+const space_grotesk = Jura({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-space-grotesk',
@@ -82,22 +81,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
+      <body className=" bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
+        {/* <body className=" dark:text-customIndigo-100 bg-customIndigo-100 text-customGrey-400 antialiased dark:bg-gray-950"> */}
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
-          <SectionContainer>
+          <MainContainer>
             <LoadingBar />
-            <div className="flex h-screen flex-col justify-between font-sans">
+            <div className="flex flex-col justify-between font-sans">
               <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
                 <Header />
-                <main className="mb-auto">
+                <main className="mx-4 mb-auto sm:mx-6">
                   {/* <TransitionCurve>{children}</TransitionCurve> */}
                   {children}
                 </main>
               </SearchProvider>
               <Footer />
             </div>
-          </SectionContainer>
+          </MainContainer>
         </ThemeProviders>
       </body>
     </html>

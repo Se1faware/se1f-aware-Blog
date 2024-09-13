@@ -4,8 +4,10 @@ const siteMetadata = {
   author: 'Vito Wang',
   headerTitle: 'Se1fAware',
   avatar: '/static/images/avatar.jpg',
-  intro: '终日乾乾，夕惕若厉，无咎。',
-  description: '一个还在重新学习，重塑思想的开发者',
+  // intro: '终日乾乾，夕惕若厉，无咎。',
+  intro: 'fouceing on self-improvement & self-growth',
+  // description: '一个还在重新学习，重塑思想的开发者',
+  description: 'A developer who is still relearning and reinventing his mind.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://se1f-aware-blog.vercel.app/',

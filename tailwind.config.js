@@ -25,8 +25,27 @@ module.exports = {
         sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
       },
       colors: {
+        transparent: 'transparent',
         primary: colors.blue,
         gray: colors.neutral,
+        customIndigo: {
+          100: '#fbfbf0',
+          200: '#f6f6dc',
+          300: '#f2f2f2',
+        },
+        customGrey: {
+          100: '#2f2f2f',
+        },
+        line: 'rgb( 204, 204, 204, 0.2)',
+        origin: 'rgb(238, 199, 99)',
+      },
+      opacity: {
+        0: '0',
+        20: '0.2',
+        40: '0.4',
+        60: '0.6',
+        80: '0.8',
+        100: '1',
       },
       typography: ({ theme }) => ({
         DEFAULT: {

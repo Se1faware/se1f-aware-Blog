@@ -58,8 +58,6 @@ import {
   IconSkillNeovimLight,
   IconSkillNotionDark,
   IconSkillNotionLight,
-  IconSkillPiniaDark,
-  IconSkillPiniaLight,
   IconSkillObsidianDark,
   IconSkillObsidianLight,
   IconSkillVercelDark,
@@ -68,6 +66,21 @@ import {
   IconSkillWebpackLight,
   IconSkillDjango,
   IconSkillSolidity,
+  IconSkillEmotionLight,
+  IconSkillEmotionDark,
+  IconSkillWebassembly,
+  IconSkillVscodeDark,
+  IconSkillVscodeLight,
+  IconSkillCpp,
+  IconSkillJest,
+  IconSkillPythonLight,
+  IconSkillPythonDark,
+  IconSkillRollupjsDark,
+  IconSkillRollupjsLight,
+  IconSkillSentry,
+  IconSkillSvelte,
+  IconSkillGraphqlDark,
+  IconSkillGraphqlLight,
 } from '@/components/icons'
 
 interface Props {
@@ -127,97 +140,156 @@ export default function AuthorLayout({ children, content }: Props) {
               </>
               Tailwind CSS
             </div>
-            <h3>I use that Front-End</h3>
+            {/* <h3>I use that Front-End</h3> */}
+            <h3>I'm good at using these skills.</h3>
             <div className="">
-              <IconSkillHTML className="mx-1 translate-y-0.5" />
-              HTML
-              <IconSkillCSS className="mx-1 translate-y-0.5" />
-              CSS
-              <IconSkillJavaScript className="mx-1 translate-y-0.5" />
-              JavaScript
+              <li>
+                <span>Base: </span>
+                <IconSkillHTML className="mx-1 translate-y-0.5" />
+                HTML
+                <IconSkillCSS className="mx-1 translate-y-0.5" />
+                CSS
+                <IconSkillJavaScript className="mx-1 translate-y-0.5" />
+                JavaScript
+              </li>
+              <li>
+                <span>Framework: </span>
+                <IconSkillVuejsDark className="mx-1 translate-y-0.5 dark:hidden" />
+                <IconSkillVuejsLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+                Vue (*eco)
+                <IconSkillSvelte className="mx-1 translate-y-0.5" />
+                Svelte
+              </li>
+              <li>
+                <span>Css: </span>
+                {/* Less Icons */}
+                <IconSkillLessDark className="mx-1 translate-y-0.5 dark:hidden" />
+                <IconSkillLessLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+                Less
+                {/* Emotion Icons */}
+                <IconSkillEmotionLight className="mx-1 translate-y-0.5 dark:hidden" />
+                <IconSkillEmotionDark className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+                Emotion
+              </li>
+              <li>
+                <span>Build: </span>
+                <IconSkillRollupjsDark className="mx-1 translate-y-0.5 dark:hidden" />
+                <IconSkillRollupjsLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+                RollupJS
+                <IconSkillWebpackDark className="mx-1 translate-y-0.5 dark:hidden" />
+                <IconSkillWebpackLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+                Webpack
+                <IconSkillViteDark className="mx-1 translate-y-0.5 dark:hidden" />
+                <IconSkillViteLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+                Vite
+              </li>
+              <li>
+                <span>UniTest: </span>
+                <IconSkillCypressDark className="mx-1 translate-y-0.5 dark:hidden" />
+                <IconSkillCypressLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+                Cypress
+                <IconSkillJest className="mx-1 translate-y-0.5" />
+                Jest
+              </li>
+              <li>
+                <span>Back-End Tech: </span>
+                <IconSkillNodejsDark className="mx-1 translate-y-0.5 dark:hidden" />
+                <IconSkillNodejsLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+                Nodejs
+                <IconSkillExpressjsDark className="mx-1 translate-y-0.5 dark:hidden" />
+                <IconSkillExpressjsLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+                Expressjs
+                <IconSkillDjango className="mx-1 translate-y-0.5" />
+                Django
+                <IconSkillCpp className="mx-1 translate-y-0.5" />
+                C++
+                <IconSkillGraphqlDark className="mx-1 translate-y-0.5 dark:hidden" />
+                <IconSkillGraphqlLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+                GraphQL
+                <IconSkillPythonLight className="mx-1 translate-y-0.5 dark:hidden" />
+                <IconSkillPythonDark className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+                Python
+              </li>
             </div>
-            <h4>Css Power</h4>
-            <ul className="flex list-none p-0">
-              <li>Less & Sass</li>
-              <li>Tailwind Css</li>
-              <li>Css in Js</li>
-              <li>Emotion Css</li>
-            </ul>
-            <h4>More Magic</h4>
-            <ul className="">
-              <li>TypeScript</li>
-              <li>React</li>
-              <li>Next.Js</li>
-            </ul>
-            <p>
-              <IconSkillViteDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillViteLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              Vite
-            </p>
-            <h4>And i has some database tech</h4>
-            <ul className="flex list-none p-0">
-              <li>TypeScript</li>
-              <li>React</li>
-              <li>Next.Js</li>
-            </ul>
+
+            <h3>And i has some database tech</h3>
             <div className="animate-fade-up animate-ease-in-out">
-              {/* Vuejs Icons */}
-              <IconSkillVuejsDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillVuejsLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              Vue Tech
-              {/* Cypress Icons */}
-              <IconSkillCypressDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillCypressLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              {/* Expressjs Icons */}
-              <IconSkillExpressjsDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillExpressjsLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              {/* Ipfs Icons */}
-              <IconSkillIpfsDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillIpfsLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              {/* Less Icons */}
-              <IconSkillLessDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillLessLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              {/* Neovim Icons */}
-              <IconSkillNeovimDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillNeovimLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              {/* Notion Icons */}
-              <IconSkillNotionDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillNotionLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              {/* Pinia Icons */}
-              <IconSkillPiniaDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillPiniaLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              {/* Obsidian Icons */}
-              <IconSkillObsidianDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillObsidianLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              {/* Vercel Icons */}
-              <IconSkillVercelDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillVercelLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              {/* Webpack Icons */}
-              <IconSkillWebpackDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillWebpackLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              {/* Django Icon */}
-              <IconSkillDjango className="mx-1 translate-y-0.5" />
-              {/* Solidity Icon */}
-              <IconSkillSolidity className="mx-1 translate-y-0.5" />
-              <IconSkillDotnet className="mx-1 translate-y-0.5" />
-              dotNET
+              <IconSkillPrisma className="mx-1 translate-y-0.5" />
+              Prisma
+              <IconSkillMysqlDark className="mx-1 translate-y-0.5 dark:hidden" />
+              <IconSkillMysqlLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+              Mysql
             </div>
+
             <h4>I used that ui components</h4>
             <div className="animate-fade-up animate-ease-in-out">
               {/* Vuetify Icons */}
               <IconSkillVuetifyDark className="mx-1 translate-y-0.5 dark:hidden" />
               <IconSkillVuetifyLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+              Vuetify
             </div>
 
             <h4>I used that cloud server</h4>
             <div className="animate-fade-up animate-ease-in-out">
+              {/* Vercel Icons */}
+              <IconSkillVercelDark className="mx-1 translate-y-0.5 dark:hidden" />
+              <IconSkillVercelLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+              Vercel
               {/* Azure Icons */}
               <IconSkillAzureDark className="mx-1 translate-y-0.5 dark:hidden" />
               <IconSkillAzureLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+              Azure
               {/* Cloudflare Icons */}
               <IconSkillCloudflareDark className="mx-1 translate-y-0.5 dark:hidden" />
               <IconSkillCloudflareLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+              Cloudflare
             </div>
+
+            <h3>I loooove web3</h3>
+            <div>
+              <IconSkillSolidity className="mx-1 translate-y-0.5" />
+              Solidity
+              {/* Ipfs Icons */}
+              <IconSkillIpfsDark className="mx-1 translate-y-0.5 dark:hidden" />
+              <IconSkillIpfsLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+              Ipfs
+            </div>
+
+            <h3>I use these tools to improve myself</h3>
+            <div>
+              {/* Neovim Icons */}
+              <IconSkillNeovimDark className="mx-1 translate-y-0.5 dark:hidden" />
+              <IconSkillNeovimLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+              Neovim
+              {/* Notion Icons */}
+              <IconSkillNotionDark className="mx-1 translate-y-0.5 dark:hidden" />
+              <IconSkillNotionLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+              Notion
+              {/* Obsidian Icons */}
+              <IconSkillObsidianDark className="mx-1 translate-y-0.5 dark:hidden" />
+              <IconSkillObsidianLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+              Obsidian
+            </div>
+            <h3>My other skills</h3>
+            <div>
+              {/* Neovim Icons */}
+              <IconSkillDocker className="mx-1 translate-y-0.5" />
+              Docker <IconSkillDotnet className="mx-1 translate-y-0.5" />
+              Dotnet
+              <IconSkillFigmaDark className="mx-1 translate-y-0.5 dark:hidden" />
+              <IconSkillFigmaLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+              Figma
+              <IconSkillSentry className="mx-1 translate-y-0.5" />
+              Sentry
+              <IconSkillVscodeDark className="mx-1 translate-y-0.5 dark:hidden" />
+              <IconSkillVscodeLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+              VSCode
+              {/* Webassembly Icon */}
+              <IconSkillWebassembly className="mx-1 translate-y-0.5" />
+              Webassembly
+            </div>
+
+            {/* ----------------------------------------- */}
           </div>
         </div>
       </div>

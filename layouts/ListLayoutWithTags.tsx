@@ -80,7 +80,7 @@ export default function ListLayoutWithTags({
       <div>
         <div className="pb-6 pt-6">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
-            {'All Blogs'}
+            All Blogs
           </h1>
         </div>
         <div className="flex sm:space-x-24">
