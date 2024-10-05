@@ -17,7 +17,7 @@ const SkillScroller = ({ skills }) => {
 
   React.useEffect(() => {
     let controls
-    let finalPosition = -width / 2 - 8
+    const finalPosition = -width / 2 - 8
 
     if (mustFinish) {
       controls = animate(xTranslation, [xTranslation.get(), finalPosition], {
@@ -39,7 +39,7 @@ const SkillScroller = ({ skills }) => {
     }
 
     return controls?.stop
-  }, [rerender, xTranslation, duration, width])
+  }, [mustFinish, rerender, xTranslation, duration, width])
 
   const maxIcons = Math.floor(width / 100) // 假设每个图标宽度为100px
 

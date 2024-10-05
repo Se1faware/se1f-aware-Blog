@@ -6,7 +6,7 @@ import SocialIcon from '@/components/social-icons'
 export default function Footer() {
   return (
     <footer>
-      <div className="border-line flex flex-col items-center border-y-[1px] pt-2">
+      <div className="flex flex-col items-center border-y-[1px] border-line pt-2">
         <div className="mb-4  flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>{siteMetadata.author}</div>
           <div>{`Copyright © ${new Date().getFullYear()}`}</div>
@@ -24,9 +24,9 @@ export default function Footer() {
               height={16}
               src="/static/images/gongan.png"
               className="mr-1 h-4 w-4"
-              alt="Web3研习社"
+              alt=""
             />
-            湘公网安备43012102000901号
+            湘公网安备430121023331231号
           </Link> */}
         {/* </div> */}
       </div>
