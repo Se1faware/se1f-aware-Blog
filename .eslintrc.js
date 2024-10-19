@@ -1,5 +1,5 @@
 module.exports = {
-  root: fals,
+  root: false,
   parser: '@typescript-eslint/parser',
   env: {
     browser: true,
