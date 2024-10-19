@@ -4,8 +4,10 @@ const siteMetadata = {
   author: 'Vito Wang',
   headerTitle: 'Se1fAware',
   avatar: '/static/images/avatar.jpg',
-  intro: '终日乾乾，夕惕若厉，无咎。',
-  description: '一个还在重新学习，重塑思想的开发者',
+  // intro: '终日乾乾，夕惕若厉，无咎。',
+  intro: 'fouceing on self-improvement & self-growth',
+  // description: '一个还在重新学习，重塑思想的开发者',
+  description: 'A developer who is still relearning and reinventing his mind.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://se1f-aware-blog.vercel.app/',
@@ -63,8 +65,10 @@ const siteMetadata = {
       repositoryId: process.env.NEXT_PUBLIC_GISCUS_REPOSITORY_ID,
       category: process.env.NEXT_PUBLIC_GISCUS_CATEGORY,
       categoryId: process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
-      mapping: 'pathname', // supported options: pathname, url, title
-      reactions: '1', // Emoji reactions: 1 = enable / 0 = disable
+      // supported options: pathname, url, title
+      mapping: 'pathname',
+      // Emoji reactions: 1 = enable / 0 = disable
+      reactions: '1',
       // Send discussion metadata periodically to the parent window: 1 = enable / 0 = disable
       metadata: '0',
       // theme example: light, dark, dark_dimmed, dark_high_contrast
@@ -85,16 +89,16 @@ const siteMetadata = {
     kbarConfig: {
       searchDocumentsPath: 'search.json', // path to load documents to search
     },
-    provider: 'algolia',
-    algoliaConfig: {
-      // The application ID provided by Algolia
-      // appId: 'R2IYF7ETH7',
-      appId: 'XM8U0F1QTW',
-      // Public API key: it is safe to commit it
-      // apiKey: '599cec31baffa4868cae4e79f180729b',
-      apiKey: '71df414381ca13ee57167030ff599844',
-      indexName: 'docsearch',
-    },
+    // provider: 'algolia',
+    // algoliaConfig: {
+    //   // The application ID provided by Algolia
+    //   // appId: 'R2IYF7ETH7',
+    //   appId: 'XM8U0F1QTW',
+    //   // Public API key: it is safe to commit it
+    //   // apiKey: '599cec31baffa4868cae4e79f180729b',
+    //   apiKey: '71df414381ca13ee57167030ff599844',
+    //   indexName: 'docsearch',
+    // },
   },
   button: {
     display: false,
@@ -104,4 +108,4 @@ const siteMetadata = {
   },
 }
 
-module.exports = siteMetadata
+export default siteMetadata

@@ -25,15 +25,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
       <article>
         <div>
           <header>
-            <div className="space-y-1 border-b border-gray-200 pb-10 text-center dark:border-gray-700">
-              {/* <dl>
-                <div>
-                  <dt className="sr-only">Published on</dt>
-                  <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                    <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
-                  </dd>
-                </div>
-              </dl> */}
+            <div className="mt-4 space-y-1 text-center dark:border-gray-700">
               <div>
                 <PageTitle>{title}</PageTitle>
                 <div className="pt-1 text-xs font-medium text-gray-700 dark:text-gray-400">

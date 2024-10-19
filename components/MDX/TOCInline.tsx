@@ -1,8 +1,6 @@
 import React from 'react'
 
 const CustomTOCInline = ({ toc }) => {
-  console.log('-------------------------')
-  console.log(toc)
   return (
     <div className="custom-toc">
       <ul>

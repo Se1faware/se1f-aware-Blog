@@ -10,6 +10,8 @@ import {
   Mastodon,
   Threads,
   Instagram,
+  leetCode,
+  dotNET,
 } from './icons'
 
 const components = {
@@ -24,6 +26,8 @@ const components = {
   mastodon: Mastodon,
   threads: Threads,
   instagram: Instagram,
+  leetCode: leetCode,
+  dotNET: dotNET,
 }
 
 type SocialIconProps = {

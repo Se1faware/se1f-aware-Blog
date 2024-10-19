@@ -133,6 +133,8 @@ export const Authors = defineDocumentType(() => ({
     github: { type: 'string' },
     juejin: { type: 'string' },
     csdn: { type: 'string' },
+    leetCode: { type: 'string' },
+    dotNET: { type: 'string' },
     layout: { type: 'string' },
   },
   computedFields,
@@ -144,7 +146,7 @@ export default makeSource({
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [
-      remarkExtractFrontmatter,
+      // remarkExtractFrontmatter,
       remarkGfm,
       remarkCodeTitles,
       remarkMath,

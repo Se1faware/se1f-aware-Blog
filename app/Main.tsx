@@ -12,8 +12,11 @@ export default function Home({ posts }) {
         <UserInfo />
         {/* Home Info Header */}
         <div className="divide-y divide-gray-200  text-3xl dark:divide-gray-700">
-          <div className="pb-3">推荐阅读</div>
-          <div className="pt-0"></div>
+          {/* <div className="pb-3">推荐阅读</div> */}
+          <h1 className="pb-3 text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
+            Recommended Reading
+          </h1>
+          {/* <div className="pt-0"></div> */}
         </div>
         <ul className="divide-y divide-dashed divide-gray-200 dark:divide-gray-700">
           {Post({ posts })}
@@ -31,11 +34,11 @@ export default function Home({ posts }) {
           </Link>
         </div>
       )}
-      {siteMetadata.newsletter?.provider && (
+      {/* {siteMetadata.newsletter?.provider && (
         <div className="flex items-center justify-center pt-4">
           <NewsletterForm />
         </div>
-      )}
+      )} */}
     </>
   )
 }
@@ -47,8 +50,8 @@ function UserInfo() {
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
           {siteMetadata.author}
         </h1>
-        <h2 className="text-xs text-gray-700 dark:text-gray-300">{siteMetadata.intro}</h2>
-        <p className="text-sm leading-7 text-gray-500 dark:text-gray-400">
+        <h2 className="text-sm text-gray-700 dark:text-gray-300">{siteMetadata.intro}</h2>
+        <p className="text-base leading-5 text-gray-500 dark:text-gray-400">
           {siteMetadata.description}
         </p>
         <div>
