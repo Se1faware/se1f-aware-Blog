@@ -80,9 +80,9 @@ export const generateStaticParams = async () => {
   return paths
 }
 
-export default async function Page({ params }: { params: { slug: string[] }; locale: string }) {
+export default async function Page({ params }: { params: { slug: string[] } }) {
   const slug = decodeURI(params.slug.join('/'))
-  const defaultLocale = 'en_US'
+  // const defaultLocale = 'en_US'
   // Filter out drafts in production
   const sortedCoreContents = allCoreContent(sortPosts(allBlogs))
 
