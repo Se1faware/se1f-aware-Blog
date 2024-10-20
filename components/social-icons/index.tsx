@@ -30,8 +30,10 @@ const components = {
   dotNET: dotNET,
 }
 
+export type SocialIconKind = keyof typeof components
+
 type SocialIconProps = {
-  kind: keyof typeof components
+  kind: SocialIconKind
   href: string | undefined
   size?: number
 }

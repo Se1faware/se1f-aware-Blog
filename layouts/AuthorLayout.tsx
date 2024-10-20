@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import type { Authors } from 'contentlayer/generated'
-import SocialIcon from '@/components/social-icons'
+import SocialIcon, { SocialIconKind } from '@/components/social-icons'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import React from 'react'
 
@@ -35,7 +35,7 @@ function SkillScroll({
   reverse = false,
 }: {
   size: number
-  skills: any[]
+  skills: Array<{ icon: React.ReactElement; darkIcon?: React.ReactElement }>
   reverse?: boolean
 }) {
   const animationClass = reverse ? 'animate-infinite-scroll-reverse' : 'animate-infinite-scroll'
@@ -154,7 +154,7 @@ export default function AuthorLayout({
             <div className="text-gray-500 dark:text-gray-400">{company}</div>
             <div className="flex space-x-3 pt-6">
               {socialLinks.map((link) => (
-                <SocialIcon key={link.kind} kind={link.kind as any} href={link.href} />
+                <SocialIcon key={link.kind} kind={link.kind as SocialIconKind} href={link.href} />
               ))}
             </div>
           </div>
