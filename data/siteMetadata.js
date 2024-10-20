@@ -4,6 +4,7 @@ const siteMetadata = {
   author: 'Vito Wang',
   headerTitle: 'Se1fAware',
   avatar: '/static/images/avatar.jpg',
+  authorSignature: '/static/images/signature.png',
   // intro: '终日乾乾，夕惕若厉，无咎。',
   intro: 'fouceing on self-improvement & self-growth',
   // description: '一个还在重新学习，重塑思想的开发者',

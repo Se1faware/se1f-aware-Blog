@@ -20,16 +20,23 @@ export default function Comments({ slug }: { slug: string }) {
 
   return (
     <>
-      {/* {!loadComments && <button onClick={() => setLoadComments(true)}>Load Comments</button>}
-      {siteMetadata.comments && loadComments && (
-        <CommentsComponent commentsConfig={siteMetadata.comments} slug={slug} />
-      )} */}
-      {/* {siteMetadata.comments && (
+      {/* {!loadComments && <button onClick={() => setLoadComments(true)}>Load Comments</button>} */}
+      {siteMetadata.comments && (
         <CommentsComponent
-          commentsConfig={{ ...siteMetadata.comments, theme: giscusTheme }}
+          commentsConfig={
+            siteMetadata.comments.provider === 'giscus'
+              ? {
+                  ...siteMetadata.comments,
+                  giscusConfig: {
+                    ...siteMetadata.comments.giscusConfig,
+                    theme: giscusTheme,
+                  },
+                }
+              : siteMetadata.comments
+          }
           slug={slug}
         />
-      )} */}
+      )}
     </>
   )
 }

@@ -1,0 +1,48 @@
+.themeSwitch {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.icon {
+  position: relative;
+  z-index: 20;
+}
+
+.animationOverlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.animateToLight {
+  width: 300vmax;
+  height: 300vmax;
+  background-color: white;
+}
+
+.animateToDark {
+  width: 300vmax;
+  height: 300vmax;
+  background-color: black;
+}
+
+:global(.dark) .animationOverlay {
+  background-color: black;
+}
+
+:global(.dark) .animateToDark {
+  width: 0;
+  height: 0;
+}

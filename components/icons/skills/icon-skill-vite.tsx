@@ -6,7 +6,7 @@ export const IconSkillViteDark = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => {
-  return <span {...props} className={cn('icon-[skill-icons:vite-dark]', className)}></span>
+  return <span {...props} className={cn('icon-[skill-icons--vite-dark]', className)}></span>
 }
 export const IconSkillViteLight = ({
   className,

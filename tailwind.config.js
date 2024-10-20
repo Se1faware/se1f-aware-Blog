@@ -13,6 +13,7 @@ module.exports = {
     './data/**/*.mdx',
   ],
   darkMode: 'class',
+  mode: 'jit',
   theme: {
     extend: {
       lineHeight: {
@@ -22,7 +23,8 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
+        sans: ['var(--font-jura)', ...fontFamily.sans],
+        wenkai: ['"LXGW WenKai TC"', 'sans-serif'],
       },
       colors: {
         transparent: 'transparent',
@@ -90,6 +92,21 @@ module.exports = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      animation: {
+        'fade-up': 'fade-up 0.5s ease-in-out',
+        'infinite-scroll': 'infinite-scroll 100s linear infinite',
+        'infinite-scroll-reverse': 'infinite-scroll-reverse 100s linear infinite',
+      },
+      keyframes: {
+        'infinite-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        },
+        'infinite-scroll-reverse': {
+          from: { transform: 'translateX(-100%)' },
+          to: { transform: 'translateX(0)' },
+        },
       },
     },
   },

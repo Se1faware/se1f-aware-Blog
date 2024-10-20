@@ -11,7 +11,7 @@ import PostSimple from '@/layouts/PostSimple'
 import PostLayout from '@/layouts/PostLayout'
 import PostBanner from '@/layouts/PostBanner'
 import { Metadata } from 'next'
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata, { locale } from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
 import ScrollProgress from '@/components/Scroll/PostScroll'
 
@@ -76,23 +76,38 @@ export async function generateMetadata({
 }
 
 export const generateStaticParams = async () => {
-  const paths = allBlogs.map((p) => ({ slug: p.slug.split('/') }))
-
+  const paths = allBlogs.map((p) => ({ slug: p.slug.split('/'), locale: p.locale }))
   return paths
 }
 
-export default async function Page({ params }: { params: { slug: string[] } }) {
+export default async function Page({ params }: { params: { slug: string[] }; locale: string }) {
   const slug = decodeURI(params.slug.join('/'))
+  const defaultLocale = 'en_US'
   // Filter out drafts in production
   const sortedCoreContents = allCoreContent(sortPosts(allBlogs))
+
+  // const postIndex = sortedCoreContents.findIndex((p) => {
+  //   console.log('slug', slug)
+  //   console.log('p.slug---', p.slug === slug)
+  //   console.log('p.locale', p.locale)
+  //   console.log('locale', locale)
+  //   console.log('p.locale---', p.locale === (locale || defaultLocale))
+  //   return p.slug === slug && p.locale === (locale || defaultLocale)
+  // })
+
   const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
+
   if (postIndex === -1) {
     return notFound()
   }
 
   const prev = sortedCoreContents[postIndex + 1]
   const next = sortedCoreContents[postIndex - 1]
-  const post = allBlogs.find((p) => p.slug === slug) as Blog
+  const post = allBlogs.find(
+    (p) => p.slug === slug
+    // (p) => p.slug === slug && p.locale === (locale || defaultLocale)
+  ) as Blog
+
   const filteredToc =
     post.toc && Array.isArray(post.toc)
       ? post.toc.map((item) => {
@@ -100,6 +115,8 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
           return { ...item, url: urlWithoutDashNumber }
         })
       : []
+
+  console.log(filteredToc)
   const authorList = post?.authors || ['default']
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author)

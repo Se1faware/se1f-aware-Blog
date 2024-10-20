@@ -1,7 +1,7 @@
 import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 
-import { Space_Grotesk, Jura } from 'next/font/google'
+import { Jura, Roboto_Mono, Noto_Sans_SC } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Layout/Header'
@@ -13,11 +13,23 @@ import { Metadata } from 'next'
 import TransitionCurve from '@/components/Transition/TransitionCurve'
 import LoadingBar from '@/components/Scroll/loadingScroll'
 
-// const space_grotesk = Space_Grotesk({
-const space_grotesk = Jura({
+const jura = Jura({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-space-grotesk',
+  variable: '--font-jura',
+})
+
+const roboto_mono = Roboto_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto-mono',
+})
+
+const noto_sans_sc = Noto_Sans_SC({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  display: 'swap',
+  variable: '--font-noto-sans-sc',
 })
 
 export const metadata: Metadata = {
@@ -61,22 +73,35 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const isChineseLanguage = siteMetadata.language.startsWith('zh')
+  const fontClass = isChineseLanguage ? noto_sans_sc.variable : jura.variable
+
   return (
     <html
       lang={siteMetadata.language}
-      className={`${space_grotesk.variable} scroll-smooth`}
+      className={`scroll-smooth ${fontClass} ${roboto_mono.variable}`}
       suppressHydrationWarning
     >
-      <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/favicon.ico" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon.ico" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon.ico" />
-      <link rel="manifest" href="/static/favicons/site.webmanifest" />
-      <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#5bbad5" />
-      <meta name="msapplication-TileColor" content="#000000" />
-      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
-      <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
-      <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <body className=" bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
+      <head>
+        {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap"
+          rel="stylesheet"
+        /> */}
+        <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon.ico" />
+        <link rel="manifest" href="/static/favicons/site.webmanifest" />
+        <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+      </head>
+      <body
+        className={`bg-white text-black antialiased dark:bg-gray-950 dark:text-white ${isChineseLanguage ? 'font-sans' : 'font-serif'}`}
+      >
         {/* <body className=" dark:text-customIndigo-100 bg-customIndigo-100 text-customGrey-400 antialiased dark:bg-gray-950"> */}
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />

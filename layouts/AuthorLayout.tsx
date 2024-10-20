@@ -1,740 +1,252 @@
 import { ReactNode } from 'react'
 import type { Authors } from 'contentlayer/generated'
 import SocialIcon from '@/components/social-icons'
-import Image from '@/components/Image'
-import siteMetadata from '@/data/siteMetadata'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Icon } from '@iconify-icon/react'
+import React from 'react'
+
+import { IconBrandPiedPiperHat } from '@/components/icons'
+
+import { frontendSkills, languageSkills, otherSkills } from '@/layouts/(_components)/skillIcons'
 
 import {
-  IconBrandGithub,
-  IconSkillNginx,
-  IconSkillCSS,
-  IconSkillDocker,
-  IconSkillFigmaDark,
-  IconSkillFigmaLight,
-  IconSkillHTML,
-  IconSkillJavaScript,
-  IconSkillMysqlDark,
-  IconSkillMysqlLight,
-  IconSkillNextjsDark,
-  IconSkillNextjsLight,
-  IconSkillNodejsDark,
-  IconSkillNodejsLight,
-  IconSkillPrisma,
+  IconSkillTypeScript,
   IconSkillReactDark,
   IconSkillReactLight,
+  IconSkillNextjsDark,
+  IconSkillNextjsLight,
   IconSkillTailwindcssDark,
   IconSkillTailwindcssLight,
-  IconSkillTypeScript,
-  IconSkillDotnet,
-  IconSkillViteDark,
-  IconSkillViteLight,
-  IconSkillVuejsDark,
-  IconSkillVuejsLight,
-  IconSkillVuetifyDark,
-  IconSkillVuetifyLight,
-  IconSkillAzureDark,
-  IconSkillAzureLight,
-  IconSkillCloudflareDark,
-  IconSkillCloudflareLight,
-  IconSkillCypressDark,
-  IconSkillCypressLight,
-  IconSkillExpressjsDark,
-  IconSkillExpressjsLight,
-  IconSkillIpfsDark,
-  IconSkillIpfsLight,
-  IconSkillLessDark,
-  IconSkillLessLight,
-  IconSkillNeovimDark,
-  IconSkillNeovimLight,
-  IconSkillNotionDark,
-  IconSkillNotionLight,
-  IconSkillObsidianDark,
-  IconSkillObsidianLight,
-  IconSkillVercelDark,
-  IconSkillVercelLight,
-  IconSkillWebpackDark,
-  IconSkillWebpackLight,
-  IconSkillDjango,
-  IconSkillSolidity,
-  IconSkillEmotionLight,
-  IconSkillEmotionDark,
-  IconSkillWebassembly,
-  IconSkillVscodeDark,
-  IconSkillVscodeLight,
-  IconSkillCpp,
-  IconSkillJest,
-  IconSkillPythonLight,
-  IconSkillPythonDark,
-  IconSkillRollupjsDark,
-  IconSkillRollupjsLight,
-  IconSkillSentry,
-  IconSkillSvelte,
-  IconSkillGraphqlDark,
-  IconSkillGraphqlLight,
-  IconBrandPiedPiperHat,
-  IconSkillHardhat,
 } from '@/components/icons'
-import SkillScroller from '@/components/Scroll/SkillScroller'
 
 interface Props {
   children: ReactNode
   content: Omit<Authors, '_id' | '_raw' | 'body'>
+  showHeader?: boolean
+  showAvatar?: boolean
+  showMainSkills?: boolean
+  showSkillCategories?: boolean
+  showSkillScroll?: boolean
+  showAboutMe?: boolean
 }
 
-export default function AuthorLayout({ children, content }: Props) {
-  const { name, avatar, occupation, company, email, github, juejin, leetCode, dotNET } = content
-  const { author } = siteMetadata
+function SkillScroll({
+  size,
+  skills,
+  reverse = false,
+}: {
+  size: number
+  skills: any[]
+  reverse?: boolean
+}) {
+  const animationClass = reverse ? 'animate-infinite-scroll-reverse' : 'animate-infinite-scroll'
+  return (
+    <div className="mb-[16px] inline-flex w-full flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
+      {[0, 1].map((key) => (
+        <ul
+          key={key}
+          className={`flex ${animationClass} items-center [&_li]:mx-[8px]`}
+          aria-hidden={key === 1}
+        >
+          {skills.map((skill, idx) => (
+            <li
+              key={idx}
+              className={`flex items-center justify-center whitespace-nowrap rounded-full bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200`}
+            >
+              {skill.darkIcon ? (
+                <>
+                  {React.cloneElement(skill.icon, {
+                    style: { width: `${size}px`, height: `${size}px` },
+                    className: 'dark:hidden',
+                  })}
+                  {React.cloneElement(skill.darkIcon, {
+                    style: { width: `${size}px`, height: `${size}px` },
+                    className: 'hidden dark:block',
+                  })}
+                </>
+              ) : (
+                React.cloneElement(skill.icon, {
+                  style: { width: `${size}px`, height: `${size}px` },
+                })
+              )}
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  )
+}
 
-  const skillsData = [
+export default function AuthorLayout({
+  children,
+  content,
+  showHeader = true,
+  showAvatar = true,
+  showMainSkills = false,
+  showSkillCategories = false,
+  showSkillScroll = true,
+  showAboutMe = true,
+}: Props) {
+  const { name, avatar, occupation, company, email, github, juejin, leetCode } = content
+
+  const socialLinks = [
+    { kind: 'mail', href: `mailto:${email}` },
+    { kind: 'github', href: github },
+    { kind: 'juejin', href: juejin },
+    { kind: 'leetCode', href: leetCode },
+  ]
+
+  const mainSkills = [
     {
-      icon: <IconSkillNginx />,
-      name: 'Nginx',
-      isDarkModeOnly: false,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--nginx]',
-    },
-    {
-      icon: <IconSkillCSS />,
-      name: 'CSS',
-      isDarkModeOnly: false,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--css]',
-    },
-    {
-      icon: <IconSkillDocker />,
-      name: 'Docker',
-      isDarkModeOnly: false,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--docker]',
-    },
-    {
-      icon: <IconSkillFigmaDark />,
-      name: 'Figma',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--figma-dark]',
-    },
-    {
-      icon: <IconSkillFigmaLight />,
-      name: 'Figma',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--figma-light]',
-    },
-    {
-      icon: <IconSkillHTML />,
-      name: 'HTML',
-      isDarkModeOnly: false,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--html]',
-    },
-    {
-      icon: <IconSkillJavaScript />,
-      name: 'JavaScript',
-      isDarkModeOnly: false,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--javascript]',
-    },
-    {
-      icon: <IconSkillMysqlDark />,
-      name: 'MySQL',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--mysql-dark]',
-    },
-    {
-      icon: <IconSkillMysqlLight />,
-      name: 'MySQL',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--mysql-light]',
-    },
-    {
-      icon: <IconSkillNextjsDark />,
-      name: 'Next.js',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--nextjs-dark]',
-    },
-    {
-      icon: <IconSkillNextjsLight />,
-      name: 'Next.js',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--nextjs-light]',
-    },
-    {
-      icon: <IconSkillNodejsDark />,
-      name: 'Node.js',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--nodejs-dark]',
-    },
-    {
-      icon: <IconSkillNodejsLight />,
-      name: 'Node.js',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--nodejs-light]',
-    },
-    {
-      icon: <IconSkillPrisma />,
-      name: 'Prisma',
-      isDarkModeOnly: false,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--prisma]',
-    },
-    {
-      icon: <IconSkillReactDark />,
-      name: 'React',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--react-dark]',
-    },
-    {
-      icon: <IconSkillReactLight />,
-      name: 'React',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--react-light]',
-    },
-    {
-      icon: <IconSkillTailwindcssDark />,
-      name: 'Tailwind CSS',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--tailwindcss-dark]',
-    },
-    {
-      icon: <IconSkillTailwindcssLight />,
-      name: 'Tailwind CSS',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--tailwindcss-light]',
-    },
-    {
-      icon: <IconSkillTypeScript />,
       name: 'TypeScript',
-      isDarkModeOnly: false,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--typescript]',
+      icon: <IconSkillTypeScript className="mx-1 inline-block translate-y-0.5" />,
     },
     {
-      icon: <IconSkillDotnet />,
-      name: 'Dotnet',
-      isDarkModeOnly: false,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--dotnet]',
+      name: 'React',
+      icon: <IconSkillReactDark className="mx-1 inline-block translate-y-0.5 dark:hidden" />,
+      darkIcon: <IconSkillReactLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />,
     },
     {
-      icon: <IconSkillViteDark />,
-      name: 'Vite',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--vite-dark]',
+      name: 'Next.js',
+      icon: <IconSkillNextjsDark className="mx-1 inline-block translate-y-0.5 dark:hidden" />,
+      darkIcon: <IconSkillNextjsLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />,
     },
     {
-      icon: <IconSkillViteLight />,
-      name: 'Vite',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--vite-light]',
+      name: 'Tailwind CSS',
+      icon: <IconSkillTailwindcssDark className="mx-1 inline-block translate-y-0.5 dark:hidden" />,
+      darkIcon: (
+        <IconSkillTailwindcssLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+      ),
     },
-    {
-      icon: <IconSkillVuejsDark />,
-      name: 'Vue.js',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--vuejs-dark]',
-    },
-    {
-      icon: <IconSkillVuejsLight />,
-      name: 'Vue.js',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--vuejs-light]',
-    },
-    {
-      icon: <IconSkillVuetifyDark />,
-      name: 'Vuetify',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--vuetify-dark]',
-    },
-    {
-      icon: <IconSkillVuetifyLight />,
-      name: 'Vuetify',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--vuetify-light]',
-    },
-    {
-      icon: <IconSkillAzureDark />,
-      name: 'Azure',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--azure-dark]',
-    },
-    {
-      icon: <IconSkillAzureLight />,
-      name: 'Azure',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--azure-light]',
-    },
-    {
-      icon: <IconSkillCloudflareDark />,
-      name: 'Cloudflare',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--cloudflare-dark]',
-    },
-    {
-      icon: <IconSkillCloudflareLight />,
-      name: 'Cloudflare',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--cloudflare-light]',
-    },
-    {
-      icon: <IconSkillCypressDark />,
-      name: 'Cypress',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--cypress-dark]',
-    },
-    {
-      icon: <IconSkillCypressLight />,
-      name: 'Cypress',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--cypress-light]',
-    },
-    {
-      icon: <IconSkillExpressjsDark />,
-      name: 'Express.js',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--expressjs-dark]',
-    },
-    {
-      icon: <IconSkillExpressjsLight />,
-      name: 'Express.js',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--expressjs-light]',
-    },
-    {
-      icon: <IconSkillIpfsDark />,
-      name: 'IPFS',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--ipfs-dark]',
-    },
-    {
-      icon: <IconSkillIpfsLight />,
-      name: 'IPFS',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--ipfs-light]',
-    },
-    {
-      icon: <IconSkillLessDark />,
-      name: 'Less',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--less-dark]',
-    },
-    {
-      icon: <IconSkillLessLight />,
-      name: 'Less',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--less-light]',
-    },
-    {
-      icon: <IconSkillNeovimDark />,
-      name: 'Neovim',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--neovim-dark]',
-    },
-    {
-      icon: <IconSkillNeovimLight />,
-      name: 'Neovim',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--neovim-light]',
-    },
-    {
-      icon: <IconSkillNotionDark />,
-      name: 'Notion',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--notion-dark]',
-    },
-    {
-      icon: <IconSkillNotionLight />,
-      name: 'Notion',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--notion-light]',
-    },
-    {
-      icon: <IconSkillObsidianDark />,
-      name: 'Obsidian',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--obsidian-dark]',
-    },
-    {
-      icon: <IconSkillObsidianLight />,
-      name: 'Obsidian',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--obsidian-light]',
-    },
-    {
-      icon: <IconSkillVercelDark />,
-      name: 'Vercel',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--vercel-dark]',
-    },
-    {
-      icon: <IconSkillVercelLight />,
-      name: 'Vercel',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--vercel-light]',
-    },
-    {
-      icon: <IconSkillWebpackDark />,
-      name: 'Webpack',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--webpack-dark]',
-    },
-    {
-      icon: <IconSkillWebpackLight />,
-      name: 'Webpack',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--webpack-light]',
-    },
-    {
-      icon: <IconSkillDjango />,
-      name: 'Django',
-      isDarkModeOnly: false,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--django]',
-    },
-    {
-      icon: <IconSkillSolidity />,
-      name: 'Solidity',
-      isDarkModeOnly: false,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--solidity]',
-    },
-    {
-      icon: <IconSkillEmotionLight />,
-      name: 'Emotion',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--emotion-light]',
-    },
-    {
-      icon: <IconSkillEmotionDark />,
-      name: 'Emotion',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--emotion-dark]',
-    },
-    {
-      icon: <IconSkillWebassembly />,
-      name: 'WebAssembly',
-      isDarkModeOnly: false,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--webassembly]',
-    },
-    {
-      icon: <IconSkillVscodeDark />,
-      name: 'VSCode',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--vscode-dark]',
-    },
-    {
-      icon: <IconSkillVscodeLight />,
-      name: 'VSCode',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--vscode-light]',
-    },
-    {
-      icon: <IconSkillCpp />,
-      name: 'C++',
-      isDarkModeOnly: false,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--cpp]',
-    },
-    {
-      icon: <IconSkillJest />,
-      name: 'Jest',
-      isDarkModeOnly: false,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--jest]',
-    },
-    {
-      icon: <IconSkillPythonLight />,
-      name: 'Python',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--python-light]',
-    },
-    {
-      icon: <IconSkillPythonDark />,
-      name: 'Python',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--python-dark]',
-    },
-    {
-      icon: <IconSkillRollupjsDark />,
-      name: 'RollupJS',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--rollupjs-dark]',
-    },
-    {
-      icon: <IconSkillRollupjsLight />,
-      name: 'RollupJS',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--rollupjs-light]',
-    },
-    {
-      icon: <IconSkillSentry />,
-      name: 'Sentry',
-      isDarkModeOnly: false,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--sentry]',
-    },
-    {
-      icon: <IconSkillSvelte />,
-      name: 'Svelte',
-      isDarkModeOnly: false,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--svelte]',
-    },
-    {
-      icon: <IconSkillGraphqlDark />,
-      name: 'GraphQL',
-      isDarkModeOnly: true,
-      isLightModeOnly: false,
-      className: 'icon-[skill-icons--graphql-dark]',
-    },
-    {
-      icon: <IconSkillGraphqlLight />,
-      name: 'GraphQL',
-      isDarkModeOnly: false,
-      isLightModeOnly: true,
-      className: 'icon-[skill-icons--graphql-light]',
-    },
+  ]
+
+  const skillCategories = [
+    { name: 'Base', skills: ['HTML', 'CSS', 'JavaScript', 'C++', 'Python'] },
+    { name: 'Framework', skills: ['Vue (*eco)', 'Svelte', 'Django'] },
+    { name: 'Build', skills: ['RollupJS', 'Webpack', 'Vite'] },
+    { name: 'CSS', skills: ['Less', 'Emotion'] },
+    { name: 'UniTest', skills: ['Cypress', 'Jest'] },
+    { name: 'Back-End Tech', skills: ['Nodejs', 'Expressjs', 'GraphQL'] },
   ]
 
   return (
     <>
-      <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-        <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-          About Me
-        </h1>
-      </div>
-      <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
-        <div className="flex flex-col items-center space-x-2 pt-8">
-          {avatar && (
-            <Avatar className="h-28 w-28 rounded-full">
-              <AvatarImage src={avatar} alt="avatar" />
-              <AvatarFallback delayMs={600}>{name}</AvatarFallback>
-            </Avatar>
-          )}
-          <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">{name}</h3>
-          <div className="text-gray-500 dark:text-gray-400">{occupation}</div>
-          <div className="text-gray-500 dark:text-gray-400">{company}</div>
-          <div className="flex space-x-3 pt-6">
-            <SocialIcon kind="mail" href={`mailto:${email}`} />
-            <SocialIcon kind="github" href={github} />
-            <SocialIcon kind="juejin" href={juejin} />
-            <SocialIcon kind="leetCode" href={leetCode} />
-          </div>
+      {showHeader && (
+        <div className="space-y-2 pb-8 pt-6 md:space-y-5">
+          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+            About Me
+          </h1>
         </div>
+      )}
+      <div className="items-start space-y-2 ">
+        {showAvatar && (
+          <div className="flex flex-col items-center space-x-2 pt-8">
+            {avatar && (
+              <Avatar className="h-28 w-28 rounded-full">
+                <AvatarImage src={avatar} alt="avatar" />
+                <AvatarFallback delayMs={600}>{name}</AvatarFallback>
+              </Avatar>
+            )}
+            <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">{name}</h3>
+            <div className="text-gray-500 dark:text-gray-400">
+              <IconBrandPiedPiperHat className="mx-1 translate-y-0.5" />
+              {occupation}
+            </div>
+            <div className="text-gray-500 dark:text-gray-400">{company}</div>
+            <div className="flex space-x-3 pt-6">
+              {socialLinks.map((link) => (
+                <SocialIcon key={link.kind} kind={link.kind as any} href={link.href} />
+              ))}
+            </div>
+          </div>
+        )}
         <div className="prose max-w-none pb-8 pt-8 dark:prose-invert xl:col-span-2">
-          <h2>
-            <IconBrandPiedPiperHat className="mx-1 translate-y-0.5" />
-            My Skills
-          </h2>
-          <h3>Mainly Coding Follow</h3>
-          <div>
-            <IconSkillTypeScript className="mx-1 translate-y-0.5" />
-            TypeScript +
+          {showMainSkills && (
             <>
-              <IconSkillReactDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillReactLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+              <h2>
+                <IconBrandPiedPiperHat className="mx-1 translate-y-0.5" />
+                My Skills
+              </h2>
+              <h3>Mainly Coding Follow</h3>
+              <div>
+                {mainSkills.map((skill, index) => (
+                  <React.Fragment key={skill?.name}>
+                    {index > 0 && ' + '}
+                    {skill?.icon}
+                    {skill?.darkIcon &&
+                      React.cloneElement(skill.darkIcon, {
+                        className: 'mx-1 hidden translate-y-0.5 dark:inline-block',
+                      })}
+                    {skill?.name}
+                  </React.Fragment>
+                ))}
+              </div>
             </>
-            React +
+          )}
+          {showSkillCategories && (
             <>
-              <IconSkillNextjsDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillNextjsLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
+              <h3>I'm good at using these skills.</h3>
+              <div>
+                {skillCategories.map((category) => (
+                  <li key={category.name}>
+                    <span>{category.name}: </span>
+                    {category.skills.join(', ')}
+                  </li>
+                ))}
+              </div>
             </>
-            Next.js +
-            <>
-              <IconSkillTailwindcssDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillTailwindcssLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-            </>
-            Tailwind CSS
-          </div>
-          <h3>I'm good at using these skills.</h3>
-          <div className="">
-            <li>
-              <span>Base: </span>
-              <IconSkillHTML className="mx-1 translate-y-0.5" />
-              HTML
-              <IconSkillCSS className="mx-1 translate-y-0.5" />
-              CSS
-              <IconSkillJavaScript className="mx-1 translate-y-0.5" />
-              JavaScript
-              <span className="mx-1 text-xl"> | </span>
-              <IconSkillCpp className="mx-1 translate-y-0.5" />
-              C++
-              <IconSkillPythonDark className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              Python
-            </li>
-            <li>
-              <span>Framework: </span>
-              <IconSkillVuejsDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillVuejsLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              Vue (*eco)
-              <IconSkillSvelte className="mx-1 translate-y-0.5" />
-              Svelte
-              <IconSkillDjango className="mx-1 translate-y-0.5" />
-              Django
-            </li>
-            <li>
-              <span>Build: </span>
-              <IconSkillRollupjsDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillRollupjsLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              RollupJS
-              <IconSkillWebpackDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillWebpackLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              Webpack
-              <IconSkillViteDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillViteLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              Vite
-            </li>
-            <li>
-              <span>Css: </span>
-              <IconSkillLessDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillLessLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              Less
-              <IconSkillEmotionLight className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillEmotionDark className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              Emotion
-            </li>
-            <li>
-              <span>UniTest: </span>
-              <IconSkillCypressDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillCypressLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              Cypress
-              <IconSkillJest className="mx-1 translate-y-0.5" />
-              Jest
-            </li>
-            <li>
-              <span>Back-End Tech: </span>
-              <IconSkillNodejsDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillNodejsLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              Nodejs
-              <IconSkillExpressjsDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillExpressjsLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              Expressjs
-              <IconSkillGraphqlDark className="mx-1 translate-y-0.5 dark:hidden" />
-              <IconSkillGraphqlLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-              GraphQL
-              <IconSkillPythonLight className="mx-1 translate-y-0.5 dark:hidden" />
-            </li>
-          </div>
+          )}
         </div>
       </div>
 
-      {/* <div className="prose w-full max-w-none pb-8 dark:prose-invert xl:col-span-2">
-        <h3>And i has some database tech</h3>
-        <div className="animate-fade-up animate-ease-in-out">
-          <IconSkillPrisma className="mx-1 translate-y-0.5" />
-          Prisma
-          <IconSkillMysqlDark className="mx-1 translate-y-0.5 dark:hidden" />
-          <IconSkillMysqlLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-          Mysql
+      {showAboutMe && (
+        <div className="mb-8 w-full">
+          {/* <h2 className="mb-4 text-center text-2xl font-bold">More</h2> */}
+          <div className="prose max-w-none dark:prose-invert">
+            <p>
+              As a passionate developer, I'm always eager to learn and grow. Here's a bit more about
+              who I am:
+            </p>
+            <ul>
+              <li>
+                <strong>Continuous Learner:</strong> Technology evolves rapidly, and I'm committed
+                to staying up-to-date with the latest trends and best practices.
+              </li>
+              <li>
+                <strong>Problem Solver:</strong> I enjoy tackling complex challenges and finding
+                efficient, elegant solutions.
+              </li>
+              <li>
+                <strong>Team Player:</strong> I believe in the power of collaboration and enjoy
+                working with diverse teams to achieve common goals.
+              </li>
+              <li>
+                <strong>Open Source Enthusiast:</strong> I contribute to and learn from open source
+                projects, believing in the importance of giving back to the community.
+              </li>
+              <li>
+                <strong>User-Centric Approach:</strong> I always keep the end-user in mind, striving
+                to create intuitive and accessible experiences.
+              </li>
+            </ul>
+            <p>
+              When I'm not coding, you might find me exploring new technologies, reading tech blogs,
+              or participating in local developer meetups. I'm always open to new opportunities and
+              collaborations, so feel free to reach out!
+            </p>
+          </div>
         </div>
+      )}
 
-        <h3>I used that cloud server</h3>
-        <div className="animate-fade-up animate-ease-in-out">
-          <IconSkillVercelDark className="mx-1 translate-y-0.5 dark:hidden" />
-          <IconSkillVercelLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-          Vercel
-          <IconSkillAzureDark className="mx-1 translate-y-0.5 dark:hidden" />
-          <IconSkillAzureLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-          Azure
-          <IconSkillCloudflareDark className="mx-1 translate-y-0.5 dark:hidden" />
-          <IconSkillCloudflareLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-          Cloudflare
+      {showSkillScroll && (
+        <div className="mb-4 w-full">
+          <h2 className="mb-4 text-center text-2xl font-bold">
+            I'am the sum of all my past experiences.
+          </h2>
+          <SkillScroll size={68} skills={languageSkills} />
+          <SkillScroll size={108} skills={frontendSkills} reverse={true} />
+          <SkillScroll size={68} skills={otherSkills} />
         </div>
-
-        <h3>I loooove web3</h3>
-        <div>
-          <IconSkillSolidity className="mx-1 translate-y-0.5" />
-          Solidity
-          <IconSkillHardhat className=" mx-1 translate-y-0.5" />
-          Hardhat
-          <IconSkillIpfsDark className="mx-1 translate-y-0.5 dark:hidden" />
-          <IconSkillIpfsLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-          Ipfs
-        </div>
-
-        <h3>I use these tools to improve myself</h3>
-        <div>
-          <IconSkillNeovimDark className="mx-1 translate-y-0.5 dark:hidden" />
-          <IconSkillNeovimLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-          Neovim
-          <IconSkillNotionDark className="mx-1 translate-y-0.5 dark:hidden" />
-          <IconSkillNotionLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-          Notion
-          <IconSkillObsidianDark className="mx-1 translate-y-0.5 dark:hidden" />
-          <IconSkillObsidianLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-          Obsidian
-        </div>
-        <h3>My other skills</h3>
-        <div>
-          <IconSkillDocker className="mx-1 translate-y-0.5" />
-          Docker <IconSkillDotnet className="mx-1 translate-y-0.5" />
-          Dotnet
-          <IconSkillFigmaDark className="mx-1 translate-y-0.5 dark:hidden" />
-          <IconSkillFigmaLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-          Figma
-          <IconSkillSentry className="mx-1 translate-y-0.5" />
-          Sentry
-          <IconSkillVscodeDark className="mx-1 translate-y-0.5 dark:hidden" />
-          <IconSkillVscodeLight className="mx-1 hidden translate-y-0.5 dark:inline-block" />
-          VSCode
-          <IconSkillWebassembly className="mx-1 translate-y-0.5" />
-          Webassembly
-        </div>
-      </div> */}
-
-      {/* <div className="mb-4">
-        <h2 className="mb-2 border-y-2 text-2xl font-bold">Let me show you my real power</h2>
-        <SkillScroller skills={skillsData} />
-      </div> */}
+      )}
     </>
   )
 }
