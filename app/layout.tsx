@@ -12,7 +12,7 @@ import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 import TransitionCurve from '@/components/Transition/TransitionCurve'
 import LoadingBar from '@/components/Scroll/loadingScroll'
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from '@vercel/analytics/react'
 
 const jura = Jura({
   subsets: ['latin'],
