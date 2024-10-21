@@ -2,7 +2,7 @@ import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 
 import { Jura, Roboto_Mono, Noto_Sans_SC } from 'next/font/google'
-import { Analytics, AnalyticsConfig } from 'pliny/analytics'
+// import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Layout/Header'
 import MainContainer from '@/components/Layout/MainContainer'
@@ -12,6 +12,7 @@ import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 import TransitionCurve from '@/components/Transition/TransitionCurve'
 import LoadingBar from '@/components/Scroll/loadingScroll'
+import { Analytics } from "@vercel/analytics/react"
 
 const jura = Jura({
   subsets: ['latin'],
@@ -103,7 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={`bg-gray-100 text-black dark:bg-[#2a2b2d] dark:text-white ${isChineseLanguage ? 'font-roboto-mono' : 'font-sans'}`}
       >
         <ThemeProviders>
-          <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
+          {/* <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} /> */}
           <MainContainer>
             <LoadingBar />
             {/* <div className="dark:text-opacity-82 flex flex-col justify-between bg-gray-100 font-sans dark:bg-[#2a2b2d] dark:text-white"> */}
@@ -112,6 +113,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <main className="mx-4 mb-auto sm:mx-6">
                 {/* <TransitionCurve>{children}</TransitionCurve> */}
                 {children}
+                <Analytics />
               </main>
             </SearchProvider>
             <Footer />
