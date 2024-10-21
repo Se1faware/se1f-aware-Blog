@@ -75,9 +75,27 @@ function UserInfo() {
 }
 
 function Post({ posts }) {
-  // TODO: Setting Not Found Note.
   if (!posts.length) {
-    return <p>No posts found.</p>
+    return (
+      <div className="flex flex-col items-center justify-center py-12">
+        <svg
+          className="mb-4 h-16 w-16 text-gray-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <p className="text-xl font-semibold text-gray-700 dark:text-gray-300">No posts found</p>
+        <p className="mt-2 text-gray-500 dark:text-gray-400">Check back later for new content</p>
+      </div>
+    )
   }
 
   return (

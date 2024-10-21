@@ -5,6 +5,7 @@ import Link from '../Link'
 import MobileNav from '../Multi-Platform/MobileNav'
 import ThemeSwitch from '../Theme/ThemeSwitch'
 import SearchButton from '../SearchButton'
+import LanguageSwitch from '../LanguageSwitch'
 
 const Header = () => {
   return (
@@ -32,6 +33,7 @@ const Header = () => {
           ))}
         <SearchButton />
         <ThemeSwitch />
+        <LanguageSwitch />
         <MobileNav />
       </div>
     </header>

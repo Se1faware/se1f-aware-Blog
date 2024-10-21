@@ -100,23 +100,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body
-        className={`bg-white text-black antialiased dark:bg-gray-950 dark:text-white ${isChineseLanguage ? 'font-sans' : 'font-serif'}`}
+        className={`bg-gray-100 text-black dark:bg-[#2a2b2d] dark:text-white ${isChineseLanguage ? 'font-roboto-mono' : 'font-sans'}`}
       >
-        {/* <body className=" dark:text-customIndigo-100 bg-customIndigo-100 text-customGrey-400 antialiased dark:bg-gray-950"> */}
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <MainContainer>
             <LoadingBar />
-            <div className="flex flex-col justify-between bg-white font-sans dark:bg-gray-950">
-              <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-                <Header />
-                <main className="mx-4 mb-auto sm:mx-6">
-                  {/* <TransitionCurve>{children}</TransitionCurve> */}
-                  {children}
-                </main>
-              </SearchProvider>
-              <Footer />
-            </div>
+            {/* <div className="dark:text-opacity-82 flex flex-col justify-between bg-gray-100 font-sans dark:bg-[#2a2b2d] dark:text-white"> */}
+            <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+              <Header />
+              <main className="mx-4 mb-auto sm:mx-6">
+                {/* <TransitionCurve>{children}</TransitionCurve> */}
+                {children}
+              </main>
+            </SearchProvider>
+            <Footer />
+            {/* </div> */}
           </MainContainer>
         </ThemeProviders>
       </body>
