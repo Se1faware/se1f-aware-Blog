@@ -107,7 +107,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} /> */}
           <MainContainer>
             <LoadingBar />
-            {/* <div className="dark:text-opacity-82 flex flex-col justify-between bg-gray-100 font-sans dark:bg-[#2a2b2d] dark:text-white"> */}
+            <div className="dark:text-opacity-82 flex flex-col justify-between bg-white font-sans dark:bg-[#000000] dark:text-white">
             <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
               <Header />
               <main className="mx-4 mb-auto sm:mx-6">
@@ -117,7 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </main>
             </SearchProvider>
             <Footer />
-            {/* </div> */}
+            </div>
           </MainContainer>
         </ThemeProviders>
       </body>

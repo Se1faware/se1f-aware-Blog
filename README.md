@@ -2,6 +2,13 @@
 
 This is my personal blog built with Next.js, Tailwind CSS, and Contentlayer. It's based on the [Tailwind Nextjs Starter Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog) template.
 
+## TODOS
+
+- i18(Focus by Chinese & English)
+- Sign Page Tranlate Animation
+- Blog side-nav Bar
+- BackEnd Blog
+
 ## Features
 
 - Next.js with TypeScript
