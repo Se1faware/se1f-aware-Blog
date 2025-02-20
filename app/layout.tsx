@@ -74,7 +74,7 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const isChineseLanguage = siteMetadata.language.startsWith('zh')
+  const isChineseLanguage = siteMetadata?.language?.startsWith('zh')
   const fontClass = isChineseLanguage ? noto_sans_sc.variable : jura.variable
 
   return (
@@ -84,12 +84,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
-        {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap"
           rel="stylesheet"
-        /> */}
+        />
         <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon.ico" />
         <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon.ico" />
@@ -101,13 +101,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body
-        className={`bg-gray-100 text-black dark:bg-[#2a2b2d] dark:text-white ${isChineseLanguage ? 'font-roboto-mono' : 'font-sans'}`}
+        className={`text-black  ${isChineseLanguage ? 'font-roboto-mono' : 'font-sans'}`}
       >
         <ThemeProviders>
           {/* <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} /> */}
           <MainContainer>
             <LoadingBar />
-            {/* <div className="dark:text-opacity-82 flex flex-col justify-between bg-gray-100 font-sans dark:bg-[#2a2b2d] dark:text-white"> */}
+            <div className="dark:text-opacity-82 flex flex-col justify-between bg-white font-sans dark:bg-[#000000] dark:text-white">
             <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
               <Header />
               <main className="mx-4 mb-auto sm:mx-6">
@@ -117,7 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </main>
             </SearchProvider>
             <Footer />
-            {/* </div> */}
+            </div>
           </MainContainer>
         </ThemeProviders>
       </body>
